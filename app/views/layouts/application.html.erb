@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Foo</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= javascript_include_tag 'https://media.twiliocdn.com/sdk/js/common/v0.1/twilio-common.min.js' %>
+    <%= javascript_include_tag 'https://media.twiliocdn.com/sdk/js/chat/v3.0/twilio-chat.min.js' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application' %>
+  </head>
+
+  <body>
+    <div class="dashboard">
+      <div class="content">
+        <div class="sideNavWrapper">
+          <div class="route">
+            <%= link_to 'Home', '/', :class => 'routeInfo' %>
+          </div>
+          <% if user_signed_in? %>
+            <%= react_component 'Notifications',
+              props: {
+                messages: current_user.profile&.notifications&.unread&.count || 0,
+                profiles: current_user.profile&.notifications&.unread&.map(&:sender)&.uniq || []
+              } 
+            %>
+            <div class="route">
+            <%= link_to 'Logout', destroy_user_session_path, method: :delete, :class => 'routeInfo' %>
+            </div>        
+          <% else %>
+            <div class="route">
+            <%= link_to 'Login', new_user_session_path, :class => 'routeInfo'  %>  
+            </div>
+          <% end %>
+        </div>
+        <%= yield %>
+      </div>
+    </div>
+  </body>
+</html>
