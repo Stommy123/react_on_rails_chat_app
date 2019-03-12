@@ -8,8 +8,6 @@
 // layout file, like app/views/layouts/application.html.erb
 import ReactOnRails from "react-on-rails";
 import "babel-polyfill";
-import Profiles from "../bundles/Profiles.jsx";
-import Messages from "../bundles/Messages.jsx";
-import Notifications from "../bundles/Notifications.jsx";
+import App from "../bundles/App.jsx";
 
-ReactOnRails.register({ Profiles, Messages, Notifications });
+ReactOnRails.register({ App });

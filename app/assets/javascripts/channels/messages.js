@@ -1,10 +1,11 @@
 $(document).on("turbolinks:load", function() {
-  var channel = $("span#channel").data("channel");
-
+  var channel = $("span#channel").data("data-channel");
+  const foo = document.querySelectorAll("form");
+  console.log(foo);
+  console.log(channel);
   if (channel) {
     var profile_1_id = channel.split(":")[1];
     var profile_2_id = channel.split(":")[2];
-
     App[
       "messages_" + profile_1_id + "_" + profile_2_id
     ] = App.cable.subscriptions.create(

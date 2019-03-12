@@ -1,1 +1,9 @@
-<%= react_component 'Profiles', props: { profile_id: current_user.profile.id } %>
+<%= 
+  react_component 'App', 
+  props: { 
+    current_user: current_user.profile,
+    notifications: current_user.profile&.notifications&.unread&.count || 0,
+    profiles: @profiles,
+
+  } 
+%>

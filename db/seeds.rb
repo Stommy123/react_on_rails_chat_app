@@ -7,16 +7,17 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Profile.destroy_all
 User.destroy_all
-User.create(email: 'new@guy.com', password: 'password', password_confirmation:  'password')
-p User.last
 [
-  ['tommy', 'tommy@tommy.com', 'password', 'password'],
-  ['harry', 'timmy@timmy.com', 'password', 'password'],
-  ['alexa', 'someguy@someguy.com', 'password', 'password'],
-  ['natalie', 'foo@bar.com', 'password', 'password'],
-  ['stevo', 'chatbot@bot.com', 'password', 'password']
+  ['Tommy', 'tommy@tommy.com', 'password', 'password'],
+  ['Andy', 'andy@andy.com', 'password', 'password'],
+  ['Don', 'don@don.com', 'password', 'password'],
+  ['Angel', 'angel@angel.com', 'password', 'password'],
+  ['Tim', 'tim@tim.com', 'password', 'password'],
+  ['Izzy', 'izzy@izzy.com', 'password', 'password'],
+  ['Patricio', 'patricio@patricio.com', 'password', 'password'],
+  ['Jo', 'jo@jo.com', 'password', 'password'],
+  ['Yuha', 'yuha@yuha.com', 'password', 'password'],
 ].each do |name, email, password, password_confirmation|
-  p email
   user = User.create(email: email, password: password, password_confirmation: password_confirmation)
   Profile.create(name: name, user_id: user.id)
 end

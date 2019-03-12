@@ -12,30 +12,6 @@
   </head>
 
   <body>
-    <div class="dashboard">
-      <div class="content">
-        <div class="sideNavWrapper">
-          <div class="route">
-            <%= link_to 'Home', '/', :class => 'routeInfo' %>
-          </div>
-          <% if user_signed_in? %>
-            <%= react_component 'Notifications',
-              props: {
-                messages: current_user.profile&.notifications&.unread&.count || 0,
-                profiles: current_user.profile&.notifications&.unread&.map(&:sender)&.uniq || []
-              } 
-            %>
-            <div class="route">
-            <%= link_to 'Logout', destroy_user_session_path, method: :delete, :class => 'routeInfo' %>
-            </div>        
-          <% else %>
-            <div class="route">
-            <%= link_to 'Login', new_user_session_path, :class => 'routeInfo'  %>  
-            </div>
-          <% end %>
-        </div>
-        <%= yield %>
-      </div>
-    </div>
+    <%= yield %>
   </body>
 </html>
